@@ -13,6 +13,31 @@ def init():
    glClearColor (0.0, 0.0, 0.0, 0.0)
    glShadeModel (GL_FLAT)
 
+def orbit():
+   glBegin(GL_LINE_STRIP)
+   for i in range(361):
+      glVertex3f(p.x * math.sin(i * math.pi / 180), 
+                     0, p.x * math.cos(i * math.pi / 180))
+   glEnd()
+
+def mercury(t):
+   glPopMatrix()
+   glPushMatrix()
+   year_period = 2.5
+   year     = (t / year_period)
+   day      = 88 * year
+
+   glRotatef(year*360.0, 0.5, 2.0, 0.0)     # Mercury rotation around the sun 
+   glTranslatef(1, -0.25, 0.0)              # Mercury location
+   glPushMatrix()                           # push venus system 
+   glPushMatrix()                           # push Mercury system 
+   glRotatef(day*360, 0.0, 0.5, 0.0)      # Mercury spinn
+   glRotatef(90, 1.0, 3.0, 0.0)        # Mercury axis
+   glColor3f (0.5, 0.5, 0.5)                      
+   glutSolidSphere(0.05, 10, 8)               # Mercury
+   glPopMatrix() 
+   glPopMatrix()  
+
 def earth_system(t):
    year_period = 5.0                  # 5 seconds for simulating one year 
    year     = (t / year_period)
@@ -37,21 +62,21 @@ def earth_system(t):
    glPopMatrix()    
 
 def venus(t):
-      glPopMatrix()
-      glPushMatrix()
-      year_period1 = 5                 # 5 seconds for simulating one year 
-      year1  = (t / year_period1)
-      day1  = 224.7 * year1
-      glRotatef(year1*360.0, 0.5, 2.0, 0.0)     # venus rotation around the sun 
-      glTranslatef(1, -0.25, 0.0)              # venus location
-      glPushMatrix()                           # push venus system 
-      glPushMatrix()
-      glRotatef(day1*360, 0.0, 1.0, 0.0)      # venus spinn
-      glRotatef(90, 3.0, 2.0, 0.0)        # venus axis
-      glColor3f (0.1, 0.1, 0.1)                      
-      glutSolidSphere(0.1, 10, 8)               # venus
-      glPopMatrix()
-      glPopMatrix() 
+   glPopMatrix()
+   glPushMatrix()
+   year_period1 = 5                 # 5 seconds for simulating one year 
+   year1  = (t / year_period1)
+   day1  = 224.7 * year1
+   glRotatef(year1*360.0, 0.5, 2.0, 0.0)     # venus rotation around the sun 
+   glTranslatef(1, -0.25, 0.0)              # venus location
+   glPushMatrix()                           # push venus system 
+   glPushMatrix()
+   glRotatef(day1*360, 0.0, 1.0, 0.0)      # venus spinn
+   glRotatef(90, 3.0, 2.0, 0.0)        # venus axis
+   glColor3f (0.1, 0.1, 0.1)                      
+   glutSolidSphere(0.1, 10, 8)               # venus
+   glPopMatrix()
+   glPopMatrix() 
 
 def mars(t):
       glPopMatrix()
@@ -74,8 +99,6 @@ def display():
       glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT )
       glEnable( GL_DEPTH_TEST )
 
-      glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT )
-      glEnable( GL_DEPTH_TEST )
       t = time.time() - start_time   
       glColor4f (1.0, 1.0, 0, 1)
       glPushMatrix()
@@ -83,6 +106,7 @@ def display():
       earth_system(t)
       venus(t)
       mars(t)
+      mercury(t)
       glPopMatrix()
 
       
