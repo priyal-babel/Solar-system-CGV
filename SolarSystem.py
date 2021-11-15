@@ -122,9 +122,9 @@ def saturn(t):
       glTranslatef(3, -0.25, 0.0)              # venus location
       glPushMatrix()                           # push venus system 
       glPushMatrix()
-      glRotatef(day1*360, 0.0, 1.0, 0.0)      # venus spinn
-      glRotatef(60,1.0, 2.0, 4.0)        # venus axis
+      glRotatef(170, 1.0, 2.0, 4.0)        # venus axis
       glColor3f (1,1,0.9)  
+      gluDisk(gluNewQuadric(), 0.4, 0.5, 60,4)      
       glutSolidSphere(0.25, 10, 8)               # venus
       glPopMatrix()
       glPopMatrix()
