@@ -46,7 +46,7 @@ def mercury(t):
    year = (t / year_period)
    day = 88 * year
 
-   glRotatef(year*360.0, 0.5, 2.0, 0.0)     # Mercury rotation around the sun 
+   glRotatef(year*360.0, 0, 1.0, 0.0)     # Mercury rotation around the sun 
    orbit(1.5,0, -0.25, 0.0) 
 
    glTranslatef(1.5, -0.25, 0.0)              # Mercury location
@@ -64,20 +64,20 @@ def earth_system(t):
    year = (t / year_period)
    day = 365 * year
    moon_sid = (365 / 27.3) * year   
-   glRotatef(year*360.0, 0.0, 1.0, 0.0)     # earth rotation around the sun 
-   orbit(1.5, 0, 0, 0.0) 
-   glTranslatef(1.5, 0.0, 0.0)              # earth location
+   glRotatef(year*360.0, 0,1,0)     # earth rotation around the sun 
+   orbit(1.5, 0, -0.25, 0.0) 
+   glTranslatef(1.5, -0.25, 0.0)              # earth location
    glPushMatrix()                           # push earth system
    glPushMatrix()
    glRotatef(day*360.0, 0.0, 1.0, 0.0)      # earth spinn
-   glRotatef(90-23.4, 1.0, 0.0, 0.0)        # earth axis
+   glRotatef(90-23.4, 1.0, 1.0, 0.0)        # earth axis
    glColor3f (0, 0, 1)    
    glutSolidSphere(0.15, 10, 8)               # earth
    glPopMatrix()
    glPushMatrix()
    glRotatef(moon_sid*360.0, 0.0, 1.0, 0.0) # moon sidereal
    glTranslatef(0.5, 0.0, 0.0)              # distance moon to earth
-   glRotatef(90, 1.0, 0.0, 0.0)
+   glRotatef(90, 1.0, 1.0, 0.0)
    glColor4f (0.4, 0.5, 0.6, 1)                         
    glutSolidSphere(0.05, 10, 8)               # moon
    glPopMatrix()
@@ -85,24 +85,18 @@ def earth_system(t):
 
 def venus(t):
    glPopMatrix()
-
    glPushMatrix()
-   year_period1 = 5                 # 5 seconds for simulating one year 
+   year_period1 = 3                 # 5 seconds for simulating one year 
    year1  = (t / year_period1)
    day1  = 224.7 * year1
-   glRotatef(year1*360.0, 0.5, 2.0, 0.0)     # venus rotation around the sun 
+   glRotatef(year1*360.0, 0,1,0)     # venus rotation around the sun 
    orbit(1.7, 0, -0.25, 0.0)                  # blue
-   
    glTranslatef(1.7, -0.25, 0.0)              # venus location
    glPushMatrix()                               # push venus system 
    glPushMatrix()
-
    glRotatef(day1*360, 0.0, 1.0, 0.0)      # venus spinn
    glRotatef(90, 3.0, 2.0, 0.0) 
-
-   glColor3f (1,0.6,0)       
-               
-       # venus axis
+   glColor3f (1,0.6,0)   
    glutSolidSphere(0.1, 10, 8)               # venus
    glPopMatrix()
    glPopMatrix() 
@@ -113,7 +107,7 @@ def uranus(t):
       year_period1 = 16              # 5 seconds for simulating one year 
       year1 = (t / year_period1)
       day1 = 687 * year1
-      glRotatef(year1*360.0, 0.5, 3.0, 1.0)     # venus rotation around the sun 
+      glRotatef(year1*360.0, 0,1,0)     # venus rotation around the sun 
       orbit(3.5,0, -0.25, 0.0) 
       glTranslatef(3.5, -0.25, 0.0)              # venus location
       glPushMatrix()                           # push venus system 
@@ -131,7 +125,7 @@ def neptune(t):
       year_period1 = 22              # 5 seconds for simulating one year 
       year1 = (t / year_period1)
       day1 = 687 * year1
-      glRotatef(year1*360.0, 0.5, 3.0, 1.0)     # venus rotation around the sun 
+      glRotatef(year1*360.0, 0,1,0)     # venus rotation around the sun 
       orbit(3.9,0, -0.25, 0.0)      
       glTranslatef(3.9, -0.25, 0.0)              # venus location
       glPushMatrix()                           # push venus system 
@@ -148,7 +142,7 @@ def saturn(t):
       year_period1 = 11                 # 5 seconds for simulating one year 
       year1 = (t / year_period1)
       day1 = 687 * year1
-      glRotatef(year1*360.0, 0.5, 3.0, 1.0)     # venus rotation around the sun 
+      glRotatef(year1*360.0, 0,1,0)    # venus rotation around the sun 
       orbit(3,0, -0.25, 0.0) 
       glTranslatef(3, -0.25, 0.0)              # venus location
       glPushMatrix()                           # push venus system 
@@ -165,7 +159,7 @@ def jupiter(t):
       year_period1 = 9                # 5 seconds for simulating one year 
       year1 = (t / year_period1)
       day1 = 4329 * year1
-      glRotatef(year1*360.0, 0.5, 3.0, 1.0)     # venus rotation around the sun 
+      glRotatef(year1*360.0, 0,1,0)     # venus rotation around the sun 
       orbit(2.5,0, -0.25, 0.0) 
       glTranslatef(2.5, -0.25, 0.0)              # venus location
       glPushMatrix()                           # push venus system 
@@ -182,7 +176,7 @@ def mars(t):
       year_period1 = 5                # 5 seconds for simulating one year 
       year1 = (t / year_period1)
       day1 = 687 * year1
-      glRotatef(year1*360.0, 0.5, 3.0, 1.0)     # venus rotation around the sun 
+      glRotatef(year1*360.0, 0,1,0)     # venus rotation around the sun 
       orbit(2,0, -0.25, 0.0) 
       glTranslatef(2.0, -0.25, 0.0)              # venus location
       glPushMatrix()                           # push venus system 
@@ -222,7 +216,7 @@ def reshape(w, h):
    gluPerspective(70.0, w/h, 1.0, 20.0)
    glMatrixMode(GL_MODELVIEW)
    glLoadIdentity()
-   gluLookAt (0.0, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0)
+   gluLookAt (0.0, 3.0, 5.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0)
 
 glutInit()
 glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH)
