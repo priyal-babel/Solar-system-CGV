@@ -15,8 +15,8 @@ y_dist = []
 size = []
 
 for i in range(300):
-      x_dist.append(random.uniform(-8,9))
-      y_dist.append(random.uniform(-6,7))
+      x_dist.append(random.uniform(-9,9))
+      y_dist.append(random.uniform(-8,9))
       size.append(random.uniform(0,3))
 
 def init(): 
@@ -197,7 +197,6 @@ def mars(t):
       glPopMatrix()   
 
 def stars():
-      glPushMatrix()
       glEnable(GL_POINT_SMOOTH)
       for i in range(300):
             glPointSize(size[i])
@@ -206,7 +205,6 @@ def stars():
             glColor3d(1, 1, 1)
             glVertex3d(x_dist[i], y_dist[i], 0)
             glEnd()
-      glPopMatrix() 
 
 def display():
       glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT )
