@@ -227,18 +227,18 @@ def display():
       glutSwapBuffers()
 
 def reshape(w, h):
-   glViewport (0, 0, w, h)
+   glViewport (0, 0, w,h)
    glMatrixMode (GL_PROJECTION)
    glLoadIdentity ()
-   gluPerspective(70.0, w/h, 1.0, 20.0)
+   gluPerspective(80.0, w/h, 1.0, 20.0)
    glMatrixMode(GL_MODELVIEW)
    glLoadIdentity()
    gluLookAt (0.0, 2.0, 5.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0)
 
 glutInit()
 glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH)
-glutInitWindowSize(1000, 800)
-glutInitWindowPosition (100, 100)
+glutInitWindowSize(1000, 600)
+glutInitWindowPosition (50, 0)
 glutCreateWindow("Solar system")
 init()
 glutDisplayFunc(display)
