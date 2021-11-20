@@ -52,9 +52,9 @@ def mercury(t):
    day = 88 * year
 
    glRotatef(year*360.0, 0, 1.0, 0.0)     # Mercury rotation around the sun 
-   orbit(1.5,0, -0.25, 0.0) 
+   orbit(1.25,0, -0.25, 0.0) 
 
-   glTranslatef(1.5, -0.25, 0.0)              # Mercury location
+   glTranslatef(1.25, -0.25, 0.0)              # Mercury location
    glPushMatrix()                           # push venus system 
    glPushMatrix()                           # push Mercury system 
    glRotatef(day*360, 0.0, 0.5, 0.0)      # Mercury spinn
@@ -70,8 +70,8 @@ def earth_system(t):
    day = 365 * year
    moon_sid = (365 / 27.3) * year   
    glRotatef(year*360.0, 0,1,0)     # earth rotation around the sun 
-   orbit(1.5, 0, -0.25, 0.0) 
-   glTranslatef(1.5, -0.25, 0.0)              # earth location
+   orbit(1.9, 0, -0.25, 0.0) 
+   glTranslatef(1.9, -0.25, 0.0)              # earth location
    glPushMatrix()                           # push earth system
    glPushMatrix()
    glRotatef(day*360.0, 0.0, 1.0, 0.0)      # earth spinn
@@ -95,8 +95,8 @@ def venus(t):
    year1  = (t / year_period1)
    day1  = 224.7 * year1
    glRotatef(year1*360.0, 0,1,0)     # venus rotation around the sun 
-   orbit(1.7, 0, -0.25, 0.0)                  # blue
-   glTranslatef(1.7, -0.25, 0.0)              # venus location
+   orbit(1.5, 0, -0.25, 0.0)                  # blue
+   glTranslatef(1.5, -0.25, 0.0)              # venus location
    glPushMatrix()                               # push venus system 
    glPushMatrix()
    glRotatef(day1*360, 0.0, 1.0, 0.0)      # venus spinn
@@ -185,8 +185,8 @@ def mars(t):
       year1 = (t / year_period1)
       day1 = 687 * year1
       glRotatef(year1*360.0, 0,1,0)     # mars rotation around the sun 
-      orbit(2,0, -0.25, 0.0) 
-      glTranslatef(2.0, -0.25, 0.0)              # mars location
+      orbit(2.2,0, -0.25, 0.0) 
+      glTranslatef(2.2, -0.25, 0.0)              # mars location
       glPushMatrix()                           # push mars system 
       glPushMatrix()
       glRotatef(day1*360, 0.0, 1.0, 0.0)      # mars spinn
@@ -214,7 +214,7 @@ def display():
       glColor4f (1.0, 1.0, 0, 1)
       glPushMatrix()
       random_point()
-      glutSolidSphere(1, 30, 16) 
+      glutSolidSphere(1, 28, 16) 
       earth_system(t)
       venus(t)
       mars(t)
