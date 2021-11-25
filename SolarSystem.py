@@ -5,7 +5,7 @@ from OpenGL.GLU import *
 import time
 import math
 import random
-import decimal
+
 start_time = time.time()
 
 year = 0
@@ -23,14 +23,15 @@ def init():
    glClearColor (0.0, 0.0, 0.0, 0.0)
    glShadeModel (GL_FLAT)
 
-def random_point():
-    glBegin(GL_POINTS)
-    for i in range(0,1000):
-        x = random.randrange(0,1000)
-        y = random.randrange(0,800)
-        glVertex2i(x,y)
-    glEnd()
-    glFlush()
+def stars():
+      glEnable(GL_POINT_SMOOTH)
+      for i in range(300):
+            glPointSize(size[i])
+
+            glBegin(GL_POINTS)
+            glColor3d(1, 1, 1)
+            glVertex3d(x_dist[i], y_dist[i], 0)
+            glEnd()
 
 def orbit(radius, x, y, z):
       glBegin(GL_LINES)
@@ -39,7 +40,7 @@ def orbit(radius, x, y, z):
       while angle < (2 * math.pi):
             x1 = x + math.cos(angle) * radius
             y1 = y
-            z1 = z + math.sin(angle) * radius;
+            z1 = z + math.sin(angle) * radius
             glVertex3f(x1, y1, z1)
             angle = angle + 0.01
       glEnd()
@@ -138,7 +139,7 @@ def neptune(t):
       glRotatef(day1*360, 0.0, 1.0, 0.0)      # neptune spinn
       glRotatef(70,1, 2.0, 1)        # neptune axis
       glColor3f (0.5,0.7,1)                      
-      glutSolidSphere(0.2, 10, 8)               # neptune
+      glutSolidSphere(0.2, 20, 40)               # neptune
       glPopMatrix()
       glPopMatrix()
 
@@ -147,7 +148,6 @@ def saturn(t):
       glPushMatrix()
       year_period1 = 11                 # 5 seconds for simulating one year 
       year1 = (t / year_period1)
-      day1 = 687 * year1
       glRotatef(year1*360.0, 0,1,0)    # saturn rotation around the sun 
       orbit(3,0, -0.25, 0.0) 
       glTranslatef(3, -0.25, 0.0)              # saturn location
@@ -156,7 +156,7 @@ def saturn(t):
       glRotatef(170, 1.0, 2.0, 4.0)        # saturn axis
       glColor3f (1,1,0.9)  
       gluDisk(gluNewQuadric(), 0.4, 0.5, 60,4)      
-      glutSolidSphere(0.25, 10, 8)               # saturn
+      glutSolidSphere(0.25, 20, 16)               # saturn
       glPopMatrix()
       glPopMatrix()
 
@@ -196,16 +196,6 @@ def mars(t):
       glPopMatrix()
       glPopMatrix()   
 
-def stars():
-      glEnable(GL_POINT_SMOOTH)
-      for i in range(300):
-            glPointSize(size[i])
-
-            glBegin(GL_POINTS)
-            glColor3d(1, 1, 1)
-            glVertex3d(x_dist[i], y_dist[i], 0)
-            glEnd()
-
 def display():
       glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT )
       glEnable( GL_DEPTH_TEST )
@@ -213,13 +203,12 @@ def display():
       stars()  
       glColor4f (1.0, 1.0, 0, 1)
       glPushMatrix()
-      random_point()
       glutSolidSphere(1, 28, 16) 
       earth_system(t)
       venus(t)
       mars(t)
       mercury(t)
-      jupiter(t)
+      jupiter(t) 
       saturn(t)
       uranus(t)
       neptune(t)
